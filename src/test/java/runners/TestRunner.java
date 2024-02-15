@@ -12,7 +12,6 @@ import io.cucumber.junit.CucumberOptions;
         monochrome = true,
         //tags = "@tag1",
      	plugin = {"pretty"}
-        //strict = true
-)
+        //strict = true)
 public class TestRunner {
 }
