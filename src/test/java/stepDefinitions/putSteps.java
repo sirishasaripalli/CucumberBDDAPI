@@ -17,7 +17,7 @@ public class putSteps {
 	private String endPoint;
 	private int actualResponseCode;
 	Response response;
-	private String userId = "7861";
+	//private String userId = "7861";
 @Given("User creates put request with valid update user body")
 public void user_creates_put_request_with_valid_update_user_body() {
 	endPoint = EndPoint.UPDATE_PERSON;
@@ -29,9 +29,9 @@ public void user_creates_put_request_with_valid_update_user_body() {
 public void user_sends_https_request_with_valid_user_id() {
 	sh = new ServiceHelpers();
 	//sh.CreateUser();
-	response = sh.updateUser(endPoint, userId);
+	response = sh.updateUser(endPoint, "7861");
 	String id =  response.jsonPath().getString("user_id");
-	System.out.println("I am hereeeee");
+	System.out.println("The response is: " +response.prettyPrint());
     System.out.println(id);
 }
 

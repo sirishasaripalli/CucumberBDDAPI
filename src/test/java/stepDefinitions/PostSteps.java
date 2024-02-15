@@ -1,5 +1,6 @@
 package stepDefinitions;
 
+import org.apache.http.HttpStatus;
 import org.junit.Assert;
 
 import Constants.EndPoint;
@@ -31,7 +32,7 @@ public class PostSteps {
 		//sh.CreateUser();
 		response = sh.CreateUser(endPoint);
 		String id =  response.jsonPath().getString("user_id");
-		System.out.println("I am hereeeee");
+		System.out.println("The response is:" + response.prettyPrint());
 	    System.out.println(id);
 	    
 	  //Assert.assertNotNull(id, "User Id is not null");  
@@ -41,6 +42,7 @@ public class PostSteps {
 	public void user_receives_status_with_response_body(Integer int1) {
 		   actualResponseCode = response.getStatusCode();
 		   Assert.assertEquals(actualResponseCode, 201);
+		   Assert.assertEquals(response.getStatusCode(), HttpStatus.SC_CREATED);
 		   System.out.println("Response I got: "+ actualResponseCode);
 	}
 
