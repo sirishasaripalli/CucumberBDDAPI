@@ -7,9 +7,11 @@ import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/resources/Features",
+        features = "src/test/resources/Features/put.feature",
         glue = {"stepDefinitions"},
-        monochrome = true
+        monochrome = true,
+        //tags = "@tag1",
+     	plugin = {"pretty"}
         //strict = true
 )
 public class TestRunner {

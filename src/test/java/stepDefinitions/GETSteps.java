@@ -25,8 +25,8 @@ import static org.hamcrest.Matchers.*;
 public class GETSteps {
 	
 	private Scenario scenario;
-    private static  String USERNAME = "*****";
-	private static  String PASSWORD = "*****";
+    private static  String USERNAME = "Numpy@gmail.com";
+	private static  String PASSWORD = "tim123";
 	private static  String BASE_URL = "https://userapi-8877aadaae71.herokuapp.com/uap";
 	private static  String end_Point;
 	private static  String api_call_url;
@@ -59,13 +59,9 @@ public class GETSteps {
 		RestAssured.baseURI = BASE_URL;
 		RequestSpecification request = RestAssured.given();
 		response = request.auth().basic(USERNAME, PASSWORD).get(api_call_url);
-
-		
 		String jsonString = response.asString();
 		
 		System.out.println(jsonString);
-		
-				
 		 
 	}
 
