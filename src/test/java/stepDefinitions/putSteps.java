@@ -17,19 +17,17 @@ public class putSteps {
 	private String endPoint;
 	private int actualResponseCode;
 	Response response;
-	//private String userId = "7861";
+	private String userId = "8343";
 @Given("User creates put request with valid update user body")
 public void user_creates_put_request_with_valid_update_user_body() {
 	endPoint = EndPoint.UPDATE_PERSON;
-    // Write code here that turns the phrase above into concrete actions
-   // throw new io.cucumber.java.PendingException();
+	System.out.println("Endpoint is :" + endPoint);
 }
 
 @When("User sends HTTPS request with valid user id")
 public void user_sends_https_request_with_valid_user_id() {
 	sh = new ServiceHelpers();
-	//sh.CreateUser();
-	response = sh.updateUser(endPoint, "7861");
+	response = sh.updateUser(endPoint, userId);
 	String id =  response.jsonPath().getString("user_id");
 	System.out.println("The response is: " +response.prettyPrint());
     System.out.println(id);

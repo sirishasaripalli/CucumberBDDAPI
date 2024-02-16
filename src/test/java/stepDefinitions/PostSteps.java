@@ -27,9 +27,7 @@ public class PostSteps {
 
 	@When("User sends HTTPS Request and with valid request body")
 	public void user_sends_https_request_and_with_valid_request_body() {
-		System.out.println("I am tttthereeeee");
 		sh = new ServiceHelpers();
-		//sh.CreateUser();
 		response = sh.CreateUser(endPoint);
 		String id =  response.jsonPath().getString("user_id");
 		System.out.println("The response is:" + response.prettyPrint());

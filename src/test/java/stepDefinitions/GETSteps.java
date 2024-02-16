@@ -1,6 +1,6 @@
 package stepDefinitions;
 
-import org.apache.http.HttpStatus;
+	import org.apache.http.HttpStatus;
 import org.junit.Assert;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -22,7 +22,7 @@ import java.lang.reflect.Type;
 
 public class GETSteps {
 	
-	//private Scenario scenario;
+	
     private ServiceHelpers sh;
 	private String endPoint;
 	private int actualResponseCode;
@@ -35,9 +35,7 @@ public class GETSteps {
 
 	@When("User Sends HTTPS Request and Basic Auth token")
 	public void user_sends_https_request_and_basic_auth_token() {
-		System.out.println("I am tttthereeeee");
-		sh = new ServiceHelpers();
-		//sh.CreateUser();
+   		sh = new ServiceHelpers();
 		response = sh.getAllUsers(endPoint);
 		
 	   Type type = new TypeReference<List<PojoforPost>>(){}.getType();

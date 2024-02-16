@@ -9,7 +9,7 @@ SWAGGER LINK : https://userapi-8877aadaae71.herokuapp.com/swagger-ui.html
     Then User receives a '<code>' OK status with message User is deleted successfully
     Examples: 
     | serviceUrlWithEndPoint                              | userId | code |
-    | https://userapi-8877aadaae71.herokuapp.com/uap/deleteuser | 7458   |  200 |
+    | https://userapi-8877aadaae71.herokuapp.com/uap/deleteuser | 6678   |  200 |
 
   @tag2
   Scenario Outline: Check if user is able to delete an existing user with username
@@ -18,7 +18,7 @@ SWAGGER LINK : https://userapi-8877aadaae71.herokuapp.com/swagger-ui.html
     Then User receives a '<code>' OK status with message User is deleted successfully
     Examples: 
     | serviceUrlWithEndPoint                              | userName | code |
-    | https://userapi-8877aadaae71.herokuapp.com/uap/deleteuser/username | ForDelete   |  200 |
+    | https://userapi-8877aadaae71.herokuapp.com/uap/deleteuser | sirisha   |  200 |
     
     @tag3
   Scenario Outline: Check if user can perform Non-Delete call by Username for Delete Endpoint

@@ -22,7 +22,7 @@ import pojoModel.PojoforPost;
 import pojoModel.UserAddress;
 
 
-public class ServiceHelpers {
+public class E2EHelpers {
 	private static String BASE_URL = ConfigManager.getInstance().getString("BASE_URL");
     private static  String USERNAME = ConfigManager.getInstance().getString("USERNAME");
 	private static  String PASSWORD = ConfigManager.getInstance().getString("PASSWORD");
@@ -30,12 +30,12 @@ public class ServiceHelpers {
 	PojoforPost pop = new PojoforPost();
 	UserAddress uad = new UserAddress();
 	
-public 	ServiceHelpers() {
+public 	E2EHelpers() {
 	RestAssured.baseURI = BASE_URL;
 }
 
 public Response getAllUsers(String endPoint){
-	System.out.println("Calling API: " + BASE_URL + endPoint);
+	System.out.println("Calling GetAllUsers API: " + BASE_URL + endPoint);
 	Response response = RestAssured.given()
 			.contentType(ContentType.JSON)
 			.when().auth().basic(USERNAME, PASSWORD).baseUri(BASE_URL)
@@ -43,25 +43,23 @@ public Response getAllUsers(String endPoint){
    return response;
 
 }
-//public List<PojoforPost> getAllUsers(String endpoint){
-//	Response response = RestAssured.given()
-//			.contentType(ContentType.JSON)
-//			.when().auth().basic(USERNAME, PASSWORD)
-//			.get(end_point);
-//
-//   Type type = new TypeReference<List<PojoforPost>>(){}.getType();
-//   List<PojoforPost> usersList = response.as(type);
-//   System.out.println(usersList);
-//   return usersList;
-//   
-//}
+
+public Response getUser(String endPoint, String userID){
+	System.out.println("Calling GetUser API: " + BASE_URL + endPoint + "/" + userID);
+	Response response = RestAssured.given()
+			.contentType(ContentType.JSON)
+			.when().auth().basic(USERNAME, PASSWORD).baseUri(BASE_URL).pathParam("user_id", userID)
+			.get(endPoint + "/{user_id}");
+   return response;
+
+}
 
 public Response CreateUser(String endPoint) {
 	pop.setUserFirstName("sirisha");
 	pop.setUserLastName("saripalli");
-	pop.setUserContactNumber("6786786789");
-	pop.setUserEmailId("telete_donald678@gmail.com");
-	uad.setPlotNumber("12-56");
+	pop.setUserContactNumber("9090908084");
+	pop.setUserEmailId("sirisha9094@gmail.com");
+	uad.setPlotNumber("123-ABC");
 	uad.setStreet("laurel way");
 	uad.setState("VA");
 	uad.setCountry("usa");
@@ -69,6 +67,8 @@ public Response CreateUser(String endPoint) {
 	pop.setUserAddress(uad);
 
 	System.out.println(pop);
+	System.out.println("Calling CreateUser API: " + BASE_URL + endPoint);
+	
 	Response response = RestAssured.given()
 			.contentType(ContentType.JSON)
 			.when().auth().basic(USERNAME, PASSWORD)
@@ -87,19 +87,19 @@ public Response CreateUser(String endPoint) {
 public Response updateUser(String endPoint, String userID) {
 	PojoforPost pop = new PojoforPost();
 	UserAddress uad = new UserAddress();
-	pop.setUserFirstName("sirisha");
-	pop.setUserLastName("saripalli");
-	pop.setUserContactNumber("6786786789");
-	pop.setUserEmailId("telete_donald678@gmail.com");
-	uad.setPlotNumber("12-4567change");
-	uad.setStreet("laurel changeuiuiu");
-	uad.setState("VA");
-	uad.setCountry("usa");
-	uad.setZipCode("20171");
+	pop.setUserFirstName("sirishaC");
+	pop.setUserLastName("saripalliC");
+	pop.setUserContactNumber("9090908085");
+	pop.setUserEmailId("sirisha9095@gmail.com");
+	uad.setPlotNumber("123-ABCC");
+	uad.setStreet("laurel wayC");
+	uad.setState("VAC");
+	uad.setCountry("usaC");
+	uad.setZipCode("201715");
 	pop.setUserAddress(uad);
 	//endPoint = endPoint + "/" + userID;
 	System.out.println(pop);
-	System.out.println(BASE_URL+endPoint);
+	System.out.println("Calling UpdateUser API: " + BASE_URL + endPoint + "/" + userID);
 	Response response = RestAssured.given()
 			.contentType(ContentType.JSON)
 			.when().auth().basic(USERNAME, PASSWORD)
@@ -118,8 +118,8 @@ public Response updateUser(String endPoint, String userID) {
 }
 
 public Response deleteUser(String endPoint, String userID) {
-	System.out.println(BASE_URL+endPoint);
-
+	
+	System.out.println("Calling DeleteUserId API: " + BASE_URL + endPoint + "/" + userID);
 	Response response = RestAssured.given()
 			.contentType(ContentType.JSON)
 			.when().auth().basic(USERNAME, PASSWORD).baseUri(BASE_URL).pathParam("user_id", userID)
